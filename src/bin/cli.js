@@ -46,15 +46,20 @@ async function run() {
   }
 
   try {
-    const rawData = fs.readFileSync(targetPackageJsonPath, 'utf-8');
+    const rawData = fs.readFileSync(targetPackageJsonPath, "utf-8");
     const parsedJson = JSON.parse(rawData);
 
     const dependencies = {
       ...parsedJson.dependencies,
-      ...parsedJson.devDependencies
+      ...parsedJson.devDependencies,
     };
 
-    const packageNames = Object.keys(dependencies);
+    // 1. Get all package names as an array
+    const allPackageNames = Object.keys(dependencies);
+
+    const packageNames = allPackageNames.filter(
+      (pkgName) => pkgName !== "@bekmurod6574/explain-deps",
+    );
 
     if (packageNames.length === 0) {
       console.log("Your package.json doesn't have any dependencies!");
@@ -66,7 +71,6 @@ async function run() {
       console.log(`\x1b[36m${pkgName}\x1b[0m: ${description}`);
       console.log("------------------------------------------------");
     }
-
   } catch (error) {
     console.error("Failed to parse package.json. Ensure it is valid JSON.");
   }
