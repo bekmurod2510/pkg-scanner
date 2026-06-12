@@ -1,6 +1,6 @@
 {
   "name": "@bekmurod6574/explain-deps",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "explain-deps is a lightweight CLI tool that brings clarity to your terminal. It scans your local package.json file, fetches your project's dependencies, and prints out a clean, plain-English summary of exactly what each package does—saving you from endless searching when trying to understand a new codebase.",
   "main": "src/index.js",
   "bin": {
